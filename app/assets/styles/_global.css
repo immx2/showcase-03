@@ -1,0 +1,92 @@
+:root {
+  --color-bg:             #fafaf9;
+  --color-surface:        #ffffff;
+  --color-surface-2:      #f4f4f5;
+  --color-text:           #0a0a0a;
+  --color-text-muted:     #71717a;
+  --color-accent:         #6366f1;
+  --color-accent-end:     #a855f7;
+  --color-border:         #e4e4e7;
+  --color-border-subtle:  #f0f0f2;
+  --color-active-bg:      #0a0a0a;
+  --color-active-text:    #fafaf9;
+
+  --nav-height: 48px;
+}
+
+[data-color-mode="dark"] {
+  --color-bg:             #09090b;
+  --color-surface:        #18181b;
+  --color-surface-2:      #27272a;
+  --color-text:           #fafafa;
+  --color-text-muted:     #a1a1aa;
+  --color-accent:         #818cf8;
+  --color-accent-end:     #c084fc;
+  --color-border:         #27272a;
+  --color-border-subtle:  #1e1e22;
+  --color-active-bg:      #3f3f46;
+  --color-active-text:    #fafafa;
+}
+
+html[data-color-pref="system"] #color-mode-pill button[aria-label="Auto (device)"],
+html[data-color-pref="light"]  #color-mode-pill button[aria-label="Light"],
+html[data-color-pref="dark"]   #color-mode-pill button[aria-label="Dark"] {
+  background: var(--color-active-bg);
+  color: var(--color-active-text);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
