@@ -14,13 +14,13 @@ export function useGsap() {
 
 export function useSectionAnimations(scopeRef: Ref<HTMLElement | undefined>) {
   const { gsap, ScrollTrigger } = useGsap()
+  const preferredReducedMotion = usePreferredReducedMotion()
   let ctx: gsap.Context | undefined
 
   onMounted(() => {
     if (!scopeRef.value) return
 
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReduced) return
+    if (preferredReducedMotion.value === 'reduce') return
 
     ctx = gsap.context(() => {}, scopeRef.value)
   })

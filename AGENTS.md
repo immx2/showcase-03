@@ -5,12 +5,13 @@
 ## Intent
 A scroll-driven storytelling page for a fictional product ("Aurora") — the third showcase project for the portfolio at `../my-portfolio`. Built as a standalone Nuxt 4 app. The design system is intentionally distinct from the portfolio's; don't borrow styles or tokens from `../my-portfolio`.
 
-Dev server runs on port 3003 (`npm run dev -- --port 3003`) to avoid conflicting with the portfolio (3000), showcase-01 (3001), and showcase-02 (3002).
+Dev server runs on port 3003 (`npm run dev`) to avoid conflicting with the portfolio (3000), showcase-01 (3001), and showcase-02 (3002).
 
 ## Conventions
 
 ### State
 Minimal global state — each section component is self-contained with its own GSAP animation context. No central composable needed; sections manage their own lifecycle.
+Shared utility composables should prefer Nuxt auto-imports, including VueUse utilities provided through `@vueuse/nuxt`.
 
 ### CSS
 - Token-first: always reach for `--space-*`, `--radius-*`, `--duration-*` before hardcoding values
