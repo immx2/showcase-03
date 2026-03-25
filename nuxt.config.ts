@@ -25,7 +25,13 @@ export default defineNuxtConfig({
   },
   vite: {
     optimizeDeps: {
-      include: ['gsap', 'gsap/ScrollTrigger'],
-    },
-  },
+      include: [
+        'gsap',
+        'gsap/ScrollTrigger',
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+        '@immx2/portfolio-nav',
+      ]
+    }
+  }
 })
