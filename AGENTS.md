@@ -3,9 +3,9 @@
 > Update this file in the same commit as the code change it describes.
 
 ## Intent
-A scroll-driven storytelling page for a fictional product ("Aurora") — the third showcase project for the portfolio at `../my-portfolio`. Built as a standalone Nuxt 4 app. The design system is intentionally distinct from the portfolio's; don't borrow styles or tokens from `../my-portfolio`.
+A scroll-driven storytelling page for a fictional product ("Aurora") built as a standalone Nuxt 4 app. The design system is purpose-built for this project — CSS gradients and shapes do the visual work; no heavy image assets.
 
-Dev server runs on port 3003 (`npm run dev`) to avoid conflicting with the portfolio (3000), showcase-01 (3001), and showcase-02 (3002).
+Dev server runs on port 3003 (`npm run dev`).
 
 ## Conventions
 
@@ -43,6 +43,6 @@ Uses ScrollTrigger pin + scrub to translate a flex track. The section height is 
 Multiple ScrollTrigger instances track scroll progress through a tall section. Each triggers a state change (`activeIndex`) that swaps visible content via Vue's `TransitionGroup`.
 
 ## Boundaries
-- This app is standalone — don't reach into `../my-portfolio`, `../showcase-01`, or `../showcase-02` for anything
+- This app is standalone — no shared code or styles from other repos
 - No Tailwind
 - Avoid heavy images — use CSS gradients and shapes for visual blocks (keeps load fast and shows CSS skill)
