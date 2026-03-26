@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const sectionRef = ref<HTMLElement>()
-const { gsap, ScrollTrigger, add } = useSectionAnimations(sectionRef)
-const activeIndex = ref(0)
+const { gsap, add } = useSectionAnimations(sectionRef)
 
 const steps = [
   {
@@ -20,219 +19,189 @@ const steps = [
 
 onMounted(() => {
   add(() => {
-    steps.forEach((_, i) => {
-      ScrollTrigger.create({
+    gsap.from('.process-eyebrow', {
+      scrollTrigger: {
         trigger: sectionRef.value,
-        start: () => `top+=${i * (window.innerHeight * 0.6)} top`,
-        end: () => `top+=${(i + 1) * (window.innerHeight * 0.6)} top`,
-        onEnter: () => { activeIndex.value = i },
-        onEnterBack: () => { activeIndex.value = i },
-      })
+        start: 'top 78%',
+      },
+      opacity: 0,
+      y: 24,
+      duration: 0.8,
+      ease: 'power3.out',
     })
 
-    ScrollTrigger.create({
-      trigger: sectionRef.value,
-      start: 'top top',
-      end: () => `+=${steps.length * window.innerHeight * 0.6}`,
-      pin: '.pinned-content',
-      scrub: false,
+    gsap.from('.process-heading', {
+      scrollTrigger: {
+        trigger: sectionRef.value,
+        start: 'top 74%',
+      },
+      opacity: 0,
+      y: 40,
+      duration: 1,
+      ease: 'power3.out',
+      delay: 0.08,
+    })
+
+    const stepEls = sectionRef.value?.querySelectorAll('.process-step')
+    stepEls?.forEach((el) => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 82%',
+        },
+      })
+
+      tl.from(el.querySelector('.step-rule'), {
+        scaleX: 0,
+        transformOrigin: 'left center',
+        duration: 0.9,
+        ease: 'power3.inOut',
+      })
+        .from(el.querySelector('.step-num'), {
+          opacity: 0,
+          x: -16,
+          duration: 0.6,
+          ease: 'power3.out',
+        }, '-=0.5')
+        .from(el.querySelector('.step-name'), {
+          opacity: 0,
+          y: 24,
+          duration: 0.8,
+          ease: 'power3.out',
+        }, '-=0.55')
+        .from(el.querySelector('.step-desc'), {
+          opacity: 0,
+          y: 16,
+          duration: 0.7,
+          ease: 'power3.out',
+        }, '-=0.6')
     })
   })
 })
 </script>
 
 <template>
-  <section
-    ref="sectionRef"
-    class="pinned-section"
-    :style="{ minHeight: `${(steps.length + 1) * 60}vh` }"
-  >
-    <div class="pinned-content">
-      <div class="pinned-layout">
-        <div class="step-indicators">
-          <button
-            v-for="(step, i) in steps"
-            :key="i"
-            class="step-indicator"
-            :class="{ active: activeIndex === i }"
-            @click="activeIndex = i"
-          >
-            <span class="step-num">{{ String(i + 1).padStart(2, '0') }}</span>
-            <span class="step-name">{{ step.title }}</span>
-          </button>
-        </div>
+  <section ref="sectionRef" class="process-section">
+    <div class="process-header">
+      <span class="process-eyebrow section-badge">Process</span>
+      <h2 class="process-heading">From idea<br />to production.</h2>
+    </div>
 
-        <div class="step-content">
-          <TransitionGroup name="fade-up">
-            <div v-for="(step, i) in steps" v-show="activeIndex === i" :key="i" class="step-panel">
-              <h3 class="step-title">{{ step.title }}</h3>
-              <p class="step-desc">{{ step.description }}</p>
-            </div>
-          </TransitionGroup>
-        </div>
-
-        <div class="step-visual">
-          <div
-            class="visual-block"
-            :style="{
-              background: `linear-gradient(${135 + activeIndex * 45}deg, var(--color-accent), var(--color-accent-end))`,
-              borderRadius: `${16 + activeIndex * 8}px`,
-            }"
-          >
-            <div class="visual-inner" :class="`step-${activeIndex}`">
-              <div v-for="n in 4" :key="n" class="visual-line" />
-            </div>
-          </div>
+    <div class="process-steps">
+      <div v-for="(step, i) in steps" :key="i" class="process-step">
+        <div class="step-rule" aria-hidden="true" />
+        <div class="step-inner">
+          <span class="step-num">{{ String(i + 1).padStart(2, '0') }}</span>
+          <h3 class="step-name">{{ step.title }}</h3>
+          <p class="step-desc">{{ step.description }}</p>
         </div>
       </div>
+      <div class="step-rule-final" aria-hidden="true" />
     </div>
   </section>
 </template>
 
 <style scoped>
-.pinned-section {
+/* ─── Section ─────────────────────────────────────── */
+.process-section {
+  padding: 0 var(--space-8);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.process-header {
+  margin-bottom: var(--space-16);
+}
+
+.section-badge {
+  display: inline-flex;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-2);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.process-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ─── Steps ───────────────────────────────────────── */
+.process-steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.process-step {
   position: relative;
 }
 
-.pinned-content {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 var(--space-8);
+.step-rule,
+.step-rule-final {
+  height: 1px;
+  background: var(--color-border-subtle);
 }
 
-.pinned-layout {
+.step-inner {
   display: grid;
-  grid-template-columns: auto 1fr 1fr;
+  grid-template-columns: 56px 1fr 1.2fr;
   gap: var(--space-10);
-  align-items: center;
-  max-width: 1100px;
-  width: 100%;
-}
-
-.step-indicators {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.step-indicator {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2) var(--space-4);
-  border: none;
-  background: transparent;
-  border-radius: var(--radius-md);
-  color: var(--color-text-muted);
-  font-size: 13px;
-  transition: all var(--duration-base) var(--ease-out);
-  cursor: pointer;
-}
-
-.step-indicator.active {
-  background: var(--color-surface);
-  color: var(--color-text);
-}
-
-.step-indicator:hover:not(.active) {
-  color: var(--color-text);
+  align-items: start;
+  padding: var(--space-12) 0;
 }
 
 .step-num {
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
   font-size: 11px;
-  opacity: 0.5;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  padding-top: 10px;
 }
 
 .step-name {
-  font-weight: 500;
-}
-
-.step-content {
-  position: relative;
-  min-height: 120px;
-}
-
-.step-panel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.step-title {
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
+  font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .step-desc {
-  font-size: 15px;
+  font-size: clamp(0.9rem, 1.15vw, 1rem);
   color: var(--color-text-muted);
-  line-height: 1.7;
-  max-width: 40ch;
+  line-height: 1.75;
+  max-width: 44ch;
+  padding-top: var(--space-3);
 }
 
-.step-visual {
-  display: flex;
-  justify-content: center;
-}
-
-.visual-block {
-  width: 100%;
-  max-width: 340px;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: border-radius 0.6s var(--ease-out), background 0.6s var(--ease-out);
-}
-
-.visual-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 60%;
-  transition: transform 0.6s var(--ease-out);
-}
-
-.visual-inner.step-0 { transform: rotate(0deg); }
-.visual-inner.step-1 { transform: rotate(3deg) scale(1.05); }
-.visual-inner.step-2 { transform: rotate(-2deg) scale(0.95); }
-
-.visual-line {
-  height: 10px;
-  border-radius: 5px;
-  background: rgb(255 255 255 / 0.25);
-}
-
-.visual-line:nth-child(1) { width: 100%; }
-.visual-line:nth-child(2) { width: 75%; }
-.visual-line:nth-child(3) { width: 88%; }
-.visual-line:nth-child(4) { width: 55%; }
-
-/* Transition classes */
-.fade-up-enter-active { transition: all 0.5s var(--ease-out); }
-.fade-up-leave-active { transition: all 0.3s ease-in; position: absolute; }
-.fade-up-enter-from { opacity: 0; transform: translateY(20px); }
-.fade-up-leave-to { opacity: 0; transform: translateY(-10px); }
-
-@media (max-width: 900px) {
-  .pinned-layout {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
+/* ─── Responsive ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .step-inner {
+    grid-template-columns: 36px 1fr;
+    gap: var(--space-5);
+    padding: var(--space-8) 0;
   }
 
-  .step-indicators {
-    flex-direction: row;
-    overflow-x: auto;
+  .step-name {
+    grid-column: 2 / 3;
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
 
-  .step-visual {
-    display: none;
+  .step-desc {
+    grid-column: 1 / -1;
+    padding-top: 0;
+    max-width: none;
   }
+
 }
 </style>

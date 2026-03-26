@@ -21,7 +21,10 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/styles/main.css'],
   fonts: {
-    families: [{ name: 'Inter', provider: 'google' }],
+    families: [
+      { name: 'Inter', provider: 'google' },
+      { name: 'Instrument Serif', provider: 'google' },
+    ],
   },
   vite: {
     optimizeDeps: {

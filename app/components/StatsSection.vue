@@ -4,10 +4,10 @@ const { gsap, ScrollTrigger, add } = useSectionAnimations(sectionRef)
 const hasAppeared = ref(false)
 
 const stats = [
-  { value: 10000, suffix: '+', label: 'Creators worldwide', format: (v: number) => `${(v / 1000).toFixed(0)}K` },
-  { value: 52000, suffix: '+', label: 'Projects shipped', format: (v: number) => `${(v / 1000).toFixed(0)}K` },
-  { value: 99.9, suffix: '%', label: 'Uptime guarantee', format: (v: number) => v.toFixed(1) },
-  { value: 2, suffix: 'x', label: 'Faster workflows', format: (v: number) => v.toFixed(0) },
+  { value: 10000, suffix: '+', label: 'Creators worldwide',  format: (v: number) => `${(v / 1000).toFixed(0)}K` },
+  { value: 52000, suffix: '+', label: 'Projects shipped',    format: (v: number) => `${(v / 1000).toFixed(0)}K` },
+  { value: 99.9,  suffix: '%', label: 'Uptime guarantee',    format: (v: number) => v.toFixed(1) },
+  { value: 2,     suffix: 'x', label: 'Faster workflows',    format: (v: number) => v.toFixed(0) },
 ]
 
 const counters = stats.map(() => ref(0))
@@ -34,9 +34,9 @@ onMounted(() => {
         stats.forEach((stat, i) => {
           gsap.to(counters[i], {
             value: stat.value,
-            duration: 1.6,
+            duration: 1.8,
             ease: 'power2.out',
-            delay: i * 0.15,
+            delay: i * 0.12,
           })
         })
       },
@@ -75,10 +75,11 @@ onMounted(() => {
 }
 
 .stats-heading {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
   margin-bottom: var(--space-16);
 }
 
@@ -92,9 +93,15 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  border: 1px solid transparent;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.6s var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
 }
 
 .stat-item.visible {
@@ -102,9 +109,15 @@ onMounted(() => {
   transform: translateY(0);
 }
 
+.stat-item:hover {
+  border-color: var(--color-border-subtle);
+  background: var(--color-surface);
+}
+
 .stat-value {
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.5vw, 4rem);
+  font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1;
   font-variant-numeric: tabular-nums;
@@ -115,21 +128,22 @@ onMounted(() => {
 }
 
 .stat-suffix {
-  font-size: 0.65em;
+  font-size: 0.6em;
+  vertical-align: super;
 }
 
 .stat-label {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--color-text-muted);
+  letter-spacing: -0.01em;
 }
 
 @media (max-width: 768px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-10);
+    gap: var(--space-6);
   }
 
-  .stats-heading br { display: none; }
 }
 
 @media (max-width: 480px) {

@@ -1,4 +1,7 @@
 :root {
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
+
   --color-bg:             #fafaf9;
   --color-surface:        #ffffff;
   --color-surface-2:      #f4f4f5;
@@ -55,7 +58,7 @@ body {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
