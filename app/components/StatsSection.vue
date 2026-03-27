@@ -10,7 +10,7 @@ const stats = [
   { value: 2,     suffix: 'x', label: 'Faster workflows',    format: (v: number) => v.toFixed(0) },
 ]
 
-const counters = stats.map(() => ref(0))
+const counters = stats.map(() => ref(0)) as Ref<number>[]
 
 onMounted(() => {
   add(() => {
@@ -32,7 +32,7 @@ onMounted(() => {
       onEnter: () => {
         hasAppeared.value = true
         stats.forEach((stat, i) => {
-          gsap.to(counters[i], {
+          gsap.to(counters[i]!, {
             value: stat.value,
             duration: 1.8,
             ease: 'power2.out',
@@ -47,7 +47,7 @@ onMounted(() => {
 
 <template>
   <section ref="sectionRef" class="stats-section">
-    <h2 class="stats-heading">Trusted by creators<br />who demand the best.</h2>
+    <h2 class="stats-heading">Trusted by creators<br >who demand the best.</h2>
 
     <div class="stats-grid">
       <div
@@ -58,7 +58,7 @@ onMounted(() => {
         :class="{ visible: hasAppeared }"
       >
         <span class="stat-value">
-          {{ stat.format(counters[i].value) }}<span class="stat-suffix">{{ stat.suffix }}</span>
+          {{ stat.format(counters[i]?.value ?? 0) }}<span class="stat-suffix">{{ stat.suffix }}</span>
         </span>
         <span class="stat-label">{{ stat.label }}</span>
       </div>

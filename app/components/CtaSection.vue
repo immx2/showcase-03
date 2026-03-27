@@ -47,10 +47,10 @@ onMounted(() => {
     <div class="cta-inner">
       <span class="cta-eyebrow">Get started today</span>
 
-      <h2 class="cta-title">Start creating<br />today.</h2>
+      <h2 class="cta-title">Start creating<br >today.</h2>
 
       <p class="cta-desc">
-        Join thousands of creators who've already made the switch.<br />
+        Join thousands of creators who've already made the switch.<br >
         Free to start. No credit card required.
       </p>
 

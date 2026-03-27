@@ -24,7 +24,7 @@ onMounted(() => {
       </h1>
 
       <p class="hero-tagline">
-        The creative workspace where ideas<br />become extraordinary experiences.
+        The creative workspace where ideas<br >become extraordinary experiences.
       </p>
     </div>
 

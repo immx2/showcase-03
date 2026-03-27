@@ -84,7 +84,7 @@ onMounted(() => {
   <section ref="sectionRef" class="process-section">
     <div class="process-header">
       <span class="process-eyebrow section-badge">Process</span>
-      <h2 class="process-heading">From idea<br />to production.</h2>
+      <h2 class="process-heading">From idea<br >to production.</h2>
     </div>
 
     <div class="process-steps">

@@ -2,7 +2,8 @@
 const sectionRef = ref<HTMLElement>()
 const { gsap, add } = useSectionAnimations(sectionRef)
 
-const cards = [
+interface BentoCard { num: string; title: string; desc: string; visual: string }
+const cards: [BentoCard, BentoCard, BentoCard, BentoCard] = [
   {
     num: '01',
     title: 'Infinite Canvas',
@@ -50,7 +51,7 @@ onMounted(() => {
   <section ref="sectionRef" class="bento-section">
     <div class="bento-header">
       <span class="section-badge">Features</span>
-      <h2 class="bento-title">Everything you need,<br />nothing you don't.</h2>
+      <h2 class="bento-title">Everything you need,<br >nothing you don't.</h2>
     </div>
 
     <div class="bento-grid">
