@@ -8,7 +8,9 @@ A scroll-driven storytelling page for a fictional product ("Aurora") built as a 
 Dev server runs on port 3003 (`npm run dev`).
 
 ## Linting & Typecheck
-Run `npm run lint && npm run typecheck` after editing any `.ts` files or `<script>` blocks in `.vue` files, and always before committing. Fix all errors before committing.
+- Run `npm run lint:all && npm run typecheck` always before committing. Fix all errors before committing.
+- `npm run lint:all` — ESLint (JS/TS/Vue `<script>`) + Stylelint (CSS/Vue `<style>`)
+- Run `npm run lint:all` after editing any `.ts`, `.css`, or `.vue` files.
 
 ## Conventions
 

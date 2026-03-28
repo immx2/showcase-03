@@ -56,7 +56,6 @@ function setMode(pref: 'system' | 'light' | 'dark') {
   padding: 0 var(--space-8);
   background: color-mix(in srgb, var(--color-bg) 80%, transparent);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border-subtle);
 }
 

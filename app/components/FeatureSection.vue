@@ -49,7 +49,7 @@ onMounted(() => {
       >
         <div class="visual-inner" aria-hidden="true">
           <div class="visual-ui">
-            <div class="ui-bar ui-bar--header" />
+            <div class="ui-bar ui-bar-header" />
             <div class="ui-row">
               <div class="ui-sidebar" />
               <div class="ui-canvas">
@@ -138,9 +138,9 @@ onMounted(() => {
   overflow: hidden;
   position: relative;
   box-shadow:
-    0 20px 60px rgb(0 0 0 / 0.12),
-    0 4px 16px rgb(0 0 0 / 0.08),
-    inset 0 1px 0 rgb(255 255 255 / 0.15);
+    0 20px 60px rgb(0 0 0 / 12%),
+    0 4px 16px rgb(0 0 0 / 8%),
+    inset 0 1px 0 rgb(255 255 255 / 15%);
 }
 
 /* Faux UI mockup inside each card */
@@ -148,9 +148,9 @@ onMounted(() => {
   width: 72%;
   aspect-ratio: 4/3;
   border-radius: var(--radius-lg);
-  background: rgb(255 255 255 / 0.10);
+  background: rgb(255 255 255 / 10%);
   backdrop-filter: blur(8px);
-  border: 1px solid rgb(255 255 255 / 0.2);
+  border: 1px solid rgb(255 255 255 / 20%);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -162,21 +162,21 @@ onMounted(() => {
   flex-shrink: 0;
 }
 
-.ui-bar--header {
-  background: rgb(255 255 255 / 0.15);
+.ui-bar-header {
+  background: rgb(255 255 255 / 15%);
   display: flex;
   align-items: center;
   padding: 0 6px;
   gap: 3px;
 }
 
-.ui-bar--header::before,
-.ui-bar--header::after {
+.ui-bar-header::before,
+.ui-bar-header::after {
   content: '';
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgb(255 255 255 / 0.4);
+  background: rgb(255 255 255 / 40%);
 }
 
 .ui-row {
@@ -187,8 +187,8 @@ onMounted(() => {
 
 .ui-sidebar {
   width: 22%;
-  background: rgb(255 255 255 / 0.08);
-  border-right: 1px solid rgb(255 255 255 / 0.1);
+  background: rgb(255 255 255 / 8%);
+  border-right: 1px solid rgb(255 255 255 / 10%);
 }
 
 .ui-canvas {
@@ -201,7 +201,7 @@ onMounted(() => {
 }
 
 .ui-block {
-  background: rgb(255 255 255 / 0.15);
+  background: rgb(255 255 255 / 15%);
   border-radius: 2px;
   height: 12px;
 }
@@ -219,14 +219,14 @@ onMounted(() => {
   background: linear-gradient(
     120deg,
     transparent 30%,
-    rgb(255 255 255 / 0.08) 50%,
+    rgb(255 255 255 / 8%) 50%,
     transparent 70%
   );
   pointer-events: none;
 }
 
 /* ─── Responsive ──────────────────────────────────── */
-@media (max-width: 900px) {
+@media (width <= 900px) {
   .feature {
     grid-template-columns: 1fr;
     gap: var(--space-10);

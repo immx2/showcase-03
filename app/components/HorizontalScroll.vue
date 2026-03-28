@@ -56,7 +56,7 @@ onMounted(() => {
 
     <div class="bento-grid">
       <!-- Card 1: Infinite Canvas — wide (2/3) -->
-      <article class="bento-card card--canvas">
+      <article class="bento-card card-canvas">
         <div class="card-meta">
           <span class="card-num">{{ cards[0].num }}</span>
         </div>
@@ -74,7 +74,7 @@ onMounted(() => {
       </article>
 
       <!-- Card 2: Smart Components — narrow (1/3) -->
-      <article class="bento-card card--components">
+      <article class="bento-card card-components">
         <div class="card-meta">
           <span class="card-num">{{ cards[1].num }}</span>
         </div>
@@ -92,7 +92,7 @@ onMounted(() => {
       </article>
 
       <!-- Card 3: Version History — narrow (1/3) -->
-      <article class="bento-card card--history">
+      <article class="bento-card card-history">
         <div class="card-meta">
           <span class="card-num">{{ cards[2].num }}</span>
         </div>
@@ -108,7 +108,7 @@ onMounted(() => {
       </article>
 
       <!-- Card 4: Design Tokens — wide (2/3) -->
-      <article class="bento-card card--tokens">
+      <article class="bento-card card-tokens">
         <div class="card-meta">
           <span class="card-num">{{ cards[3].num }}</span>
         </div>
@@ -166,10 +166,10 @@ onMounted(() => {
   gap: var(--space-4);
 }
 
-.card--canvas     { grid-column: 1 / 3; }
-.card--components { grid-column: 3 / 4; }
-.card--history    { grid-column: 1 / 2; }
-.card--tokens     { grid-column: 2 / 4; }
+.card-canvas     { grid-column: 1 / 3; }
+.card-components { grid-column: 3 / 4; }
+.card-history    { grid-column: 1 / 2; }
+.card-tokens     { grid-column: 2 / 4; }
 
 /* ─── Card base ───────────────────────────────────── */
 .bento-card {
@@ -191,7 +191,7 @@ onMounted(() => {
 
 .bento-card:hover {
   border-color: var(--color-border);
-  box-shadow: 0 8px 48px rgb(0 0 0 / 0.07);
+  box-shadow: 0 8px 48px rgb(0 0 0 / 7%);
   transform: translateY(-2px);
 }
 
@@ -382,10 +382,10 @@ onMounted(() => {
   border-radius: 50%;
   background: linear-gradient(
     135deg,
-    hsl(calc(230 + var(--pos) * 22), 75%, 62%),
-    hsl(calc(260 + var(--pos) * 18), 80%, 68%)
+    hsl(calc(230 + var(--pos) * 22) 75% 62%),
+    hsl(calc(260 + var(--pos) * 18) 80% 68%)
   );
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+  box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
   transition: transform var(--duration-base) var(--ease-out);
 }
 
@@ -395,15 +395,15 @@ onMounted(() => {
 }
 
 /* ─── Responsive ──────────────────────────────────── */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .bento-grid {
     grid-template-columns: 1fr;
   }
 
-  .card--canvas,
-  .card--components,
-  .card--history,
-  .card--tokens {
+  .card-canvas,
+  .card-components,
+  .card-history,
+  .card-tokens {
     grid-column: 1 / -1;
   }
 

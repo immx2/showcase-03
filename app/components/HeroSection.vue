@@ -38,7 +38,7 @@ onMounted(() => {
 
     <div class="hero-glows" aria-hidden="true">
       <div class="hero-glow" />
-      <div class="hero-glow hero-glow--2" />
+      <div class="hero-glow hero-glow-2" />
     </div>
   </section>
 </template>
@@ -97,6 +97,7 @@ onMounted(() => {
   font-size: clamp(5.5rem, 18vw, 15rem);
   line-height: 0.88;
   margin: 0;
+
   /* Padding gives the background-clip gradient room for italic ink overhang */
   padding: 0.15em 0.2em;
   background: linear-gradient(
@@ -105,9 +106,8 @@ onMounted(() => {
     var(--color-accent) 50%,
     var(--color-accent-end) 100%
   );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-wordmark {
@@ -143,10 +143,10 @@ onMounted(() => {
 }
 
 .scroll-dot {
-  animation: scrollBounce 2s ease-in-out infinite;
+  animation: scroll-bounce 2s ease-in-out infinite;
 }
 
-@keyframes scrollBounce {
+@keyframes scroll-bounce {
   0%, 100% { cy: 7; }
   50% { cy: 15; opacity: 0.3; }
 }
@@ -167,7 +167,7 @@ onMounted(() => {
   filter: blur(80px);
 }
 
-.hero-glow--2 {
+.hero-glow-2 {
   top: 55%;
   background: radial-gradient(circle, var(--color-accent-end) 0%, transparent 65%);
   opacity: 0.05;
@@ -175,7 +175,7 @@ onMounted(() => {
   height: 50vw;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .hero-tagline br { display: none; }
 }
 </style>

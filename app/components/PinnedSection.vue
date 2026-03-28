@@ -185,7 +185,7 @@ onMounted(() => {
 }
 
 /* ─── Responsive ──────────────────────────────────── */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .step-inner {
     grid-template-columns: 36px 1fr;
     gap: var(--space-5);

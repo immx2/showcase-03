@@ -79,7 +79,7 @@ onMounted(() => {
     </footer>
 
     <div class="cta-glow" aria-hidden="true" />
-    <div class="cta-glow cta-glow--2" aria-hidden="true" />
+    <div class="cta-glow cta-glow-2" aria-hidden="true" />
   </section>
 </template>
 
@@ -165,8 +165,8 @@ onMounted(() => {
 
 .cta-btn:hover {
   box-shadow:
-    0 8px 32px rgb(99 102 241 / 0.4),
-    0 2px 8px rgb(99 102 241 / 0.2);
+    0 8px 32px rgb(99 102 241 / 40%),
+    0 2px 8px rgb(99 102 241 / 20%);
 }
 
 /* ─── Footer ──────────────────────────────────────── */
@@ -200,7 +200,7 @@ onMounted(() => {
   pointer-events: none;
 }
 
-.cta-glow--2 {
+.cta-glow-2 {
   background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
   width: 40vw;
   height: 40vw;
@@ -208,7 +208,7 @@ onMounted(() => {
   opacity: 0.05;
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .cta-title br,
   .cta-desc br { display: none; }
 }

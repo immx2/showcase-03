@@ -122,9 +122,8 @@ onMounted(() => {
   line-height: 1;
   font-variant-numeric: tabular-nums;
   background: linear-gradient(135deg, var(--color-accent), var(--color-accent-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .stat-suffix {
@@ -138,7 +137,7 @@ onMounted(() => {
   letter-spacing: -0.01em;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-6);
@@ -146,7 +145,7 @@ onMounted(() => {
 
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .stats-grid {
     grid-template-columns: 1fr 1fr;
   }

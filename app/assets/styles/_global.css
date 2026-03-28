@@ -1,9 +1,8 @@
 :root {
   --font-body:    'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Instrument Serif', Georgia, serif;
-
+  --font-display: 'Instrument Serif', georgia, serif;
   --color-bg:             #fafaf9;
-  --color-surface:        #ffffff;
+  --color-surface:        #fff;
   --color-surface-2:      #f4f4f5;
   --color-text:           #0a0a0a;
   --color-text-muted:     #71717a;
@@ -13,7 +12,6 @@
   --color-border-subtle:  #f0f0f2;
   --color-active-bg:      #0a0a0a;
   --color-active-text:    #fafaf9;
-
   --nav-height: 48px;
 }
 
