@@ -64,7 +64,7 @@ function setMode(pref: 'system' | 'light' | 'dark') {
           reversed
         />
 
-        <HorizontalScroll />
+        <BentoSection />
 
         <StatsSection />
 

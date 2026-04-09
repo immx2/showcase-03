@@ -45,9 +45,6 @@ Shared utility composables should prefer Nuxt auto-imports, including VueUse uti
 3. Create animations inside `add(() => { ... })` callback
 4. Add the component inside the `sections` div in `index.vue`
 
-### Horizontal scroll
-Uses ScrollTrigger pin + scrub to translate a flex track. The section height is set via ScrollTrigger's `end` offset calculation.
-
 ### Pinned section
 Multiple ScrollTrigger instances track scroll progress through a tall section. Each triggers a state change (`activeIndex`) that swaps visible content via Vue's `TransitionGroup`.
 

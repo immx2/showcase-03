@@ -8,7 +8,7 @@ Built with Nuxt 4, GSAP + ScrollTrigger, and TypeScript. No heavy images — all
 
 ## What it demonstrates
 
-- **Marketing surface design** — hero, feature sections, stats, horizontal scroll, and a CTA composed as a coherent narrative arc
+- **Marketing surface design** — hero, feature sections, bento grid, stats, and a CTA composed as a coherent narrative arc
 - **Scroll-driven motion** — GSAP ScrollTrigger animations tied to scroll position, not timers; content reveals feel earned
 - **CSS craft** — gradients, shapes, layering, and typography doing the visual heavy lifting; no image assets required
 - **Accessibility** — `prefers-reduced-motion: reduce` is respected throughout; animations are skipped and CSS fallbacks apply
@@ -31,7 +31,7 @@ Built with Nuxt 4, GSAP + ScrollTrigger, and TypeScript. No heavy images — all
 ## Features
 
 - **Hero section** — full-viewport opening with scroll-triggered entrance animations
-- **Horizontal scroll** — ScrollTrigger pin + scrub translates a flex track; section height calculated from scroll distance
+- **Bento grid** — four feature cards in a 3-column CSS grid layout with scroll-triggered fade-in
 - **Pinned section** — tall scroll container with multiple ScrollTrigger instances tracking progress; drives `activeIndex` state swapping content via Vue `TransitionGroup`
 - **Feature sections** — staggered reveals on scroll entry
 - **Stats section** — animated counters and visual indicators
@@ -47,7 +47,7 @@ app/
   components/
     AppNav.vue           # Navigation + color mode toggle
     HeroSection.vue      # Full-viewport hero with entrance animation
-    HorizontalScroll.vue # Pinned horizontal scroll track
+    BentoSection.vue     # Four-card bento grid with scroll-triggered reveal
     PinnedSection.vue    # Tall pinned section with indexed state transitions
     FeatureSection.vue   # Scroll-triggered feature reveals
     StatsSection.vue     # Animated stats
