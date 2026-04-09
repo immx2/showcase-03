@@ -75,7 +75,7 @@ onMounted(() => {
     </div>
 
     <footer class="page-footer">
-      <p>&copy; 2026 Aurora — A showcase-03 demo project</p>
+      <p>&copy; 2026 Immanuel</p>
     </footer>
 
     <div class="cta-glow" aria-hidden="true" />
