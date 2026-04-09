@@ -22,6 +22,10 @@ Dev server runs on port 3003 (`npm run dev`).
 Minimal global state — each section component is self-contained with its own GSAP animation context. No central composable needed; sections manage their own lifecycle.
 Shared utility composables should prefer Nuxt auto-imports, including VueUse utilities provided through `@vueuse/nuxt`.
 
+### VueUse
+- `@vueuse/nuxt` is in `nuxt.config.ts` modules; it depends on `@vueuse/core` — keep only `@vueuse/nuxt` in `package.json` unless you need to pin `@vueuse/core` explicitly.
+- VueUse composables (`useEventListener`, etc.) are Nuxt auto-imported; do not import from `@vueuse/core` in app code.
+
 ### CSS
 - Token-first: always reach for `--space-*`, `--radius-*`, `--duration-*` before hardcoding values
 - Colors live in `_global.css` — 3-tier color mode (auto/light/dark) via `data-color-mode` on `<html>`
@@ -30,7 +34,7 @@ Shared utility composables should prefer Nuxt auto-imports, including VueUse uti
 - Accent gradient via `--color-accent` → `--color-accent-end`
 
 ### GSAP / ScrollTrigger
-- `useGsap()` composable handles one-time plugin registration
+- `useGsap()` composable handles one-time plugin registration — ScrollTrigger must be registered with `gsap.registerPlugin()` before any scroll animation runs, and this composable ensures it happens exactly once across all section components
 - `useSectionAnimations(ref)` provides a scoped GSAP context + helper for each section
 - Each section creates animations inside `onMounted` → `add(() => { ... })`
 - Context is automatically reverted on unmount (no memory leaks)

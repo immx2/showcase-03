@@ -24,7 +24,7 @@ Built with Nuxt 4, GSAP + ScrollTrigger, and TypeScript. No heavy images — all
 | Animation | GSAP + ScrollTrigger |
 | Language | TypeScript |
 | Color mode | `@nuxtjs/color-mode` (light / dark / system) |
-| Utilities | `@vueuse/core` |
+| Utilities | `@vueuse/nuxt` (auto-imports `@vueuse/core` composables) |
 
 ---
 
