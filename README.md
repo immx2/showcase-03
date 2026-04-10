@@ -45,7 +45,6 @@ Built with Nuxt 4, GSAP + ScrollTrigger, and TypeScript. No heavy images — all
 ```
 app/
   components/
-    AppNav.vue           # Navigation + color mode toggle
     HeroSection.vue      # Full-viewport hero with entrance animation
     BentoSection.vue     # Four-card bento grid with scroll-triggered reveal
     PinnedSection.vue    # Tall pinned section with indexed state transitions
@@ -53,8 +52,7 @@ app/
     StatsSection.vue     # Animated stats
     CtaSection.vue       # Closing call to action
   composables/
-    useGsap.ts           # One-time GSAP + ScrollTrigger plugin registration
-    useSectionAnimations.ts # Scoped GSAP context per section
+    useGsap.ts           # GSAP + ScrollTrigger registration; exports useSectionAnimations()
   pages/
     index.vue
 ```

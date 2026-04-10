@@ -35,7 +35,7 @@ Shared utility composables should prefer Nuxt auto-imports, including VueUse uti
 
 ### GSAP / ScrollTrigger
 - `useGsap()` composable handles one-time plugin registration — ScrollTrigger must be registered with `gsap.registerPlugin()` before any scroll animation runs, and this composable ensures it happens exactly once across all section components
-- `useSectionAnimations(ref)` provides a scoped GSAP context + helper for each section
+- `useSectionAnimations(ref)` provides a scoped GSAP context + helper for each section — exported from the same `useGsap.ts` file, not a separate composable
 - Each section creates animations inside `onMounted` → `add(() => { ... })`
 - Context is automatically reverted on unmount (no memory leaks)
 - All animated components are wrapped in `ClientOnly` (GSAP requires DOM)
