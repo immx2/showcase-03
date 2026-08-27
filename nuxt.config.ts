@@ -20,7 +20,10 @@ export default defineNuxtConfig({
       }],
     },
   },
-  css: ['~/assets/styles/main.css'],
+  css: [
+    '~/assets/styles/tokens.css',
+    '~/assets/styles/global.css',
+  ],
   fonts: {
     families: [
       { name: 'Inter', provider: 'google' },
